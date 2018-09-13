@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colin.ctravel.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.colin.ctravel.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="nickName" jdbcType="VARCHAR" property="nickname"/>
+        <result column="passworld" jdbcType="VARCHAR" property="passworld"/>
+        <result column="gender" jdbcType="INTEGER" property="gender"/>
+        <result column="headUrl" jdbcType="LONGVARCHAR" property="headUrl"/>
+        <result column="fromWx" jdbcType="BOOLEAN" property="fromWx"/>
+    </resultMap>
+
+    <resultMap id="NoPwdResultMap" type="com.colin.ctravel.entity.result.UserResult">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="nickName" jdbcType="VARCHAR" property="nickname"/>
+        <result column="gender" jdbcType="INTEGER" property="gender"/>
+        <result column="headUrl" jdbcType="LONGVARCHAR" property="headUrl"/>
+        <result column="fromWx" jdbcType="BOOLEAN" property="fromWx"/>
+    </resultMap>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="NoPwdResultMap">
+        select id,account,nickName,gender,headUrl,fromWx
+        from t_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectByAccount" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from t_user
+        where account = #{account,jdbcType=VARCHAR}
+    </select>
+
+
+</mapper>
