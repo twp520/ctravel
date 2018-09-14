@@ -2,7 +2,6 @@ package com.colin.ctravel.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Post implements Serializable {
     private Integer id;
@@ -13,11 +12,11 @@ public class Post implements Serializable {
 
     private String departure;
 
-    private Timestamp startTime;
+    private Long startTime;
 
     private String contact;
 
-    private Integer userid;
+    private Integer userId;
 
     private Timestamp createTime;
 
@@ -59,11 +58,11 @@ public class Post implements Serializable {
         this.departure = departure == null ? null : departure.trim();
     }
 
-    public Timestamp getStartTime() {
+    public Long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp starttime) {
+    public void setStartTime(Long starttime) {
         this.startTime = starttime;
     }
 
@@ -75,12 +74,12 @@ public class Post implements Serializable {
         this.contact = contact == null ? null : contact.trim();
     }
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Timestamp getCreateTime() {

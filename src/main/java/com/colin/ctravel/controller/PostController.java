@@ -35,10 +35,10 @@ public class PostController {
     public BaseResult sendPost(Post post) {
         if (post == null)
             return ResultUtil.requestFail("未知错误");
-        if (post.getUserid() == 0 || post.getUserid() == -1) {
+        if (post.getUserId() == 0 || post.getUserId() == -1) {
             return ResultUtil.requestFail("用户不存在");
         }
-        if (!userService.hasUserById(post.getUserid())) {
+        if (!userService.hasUserById(post.getUserId())) {
             return ResultUtil.requestFail("用户不存在");
         }
         int row = postService.addOnePost(post);

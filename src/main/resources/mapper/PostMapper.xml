@@ -6,9 +6,9 @@
         <result column="title" jdbcType="VARCHAR" property="title"/>
         <result column="destination" jdbcType="VARCHAR" property="destination"/>
         <result column="departure" jdbcType="VARCHAR" property="departure"/>
-        <result column="startTime" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="startTime" jdbcType="BIGINT" property="startTime"/>
         <result column="contact" jdbcType="VARCHAR" property="contact"/>
-        <result column="userId" jdbcType="INTEGER" property="userid"/>
+        <result column="userId" jdbcType="INTEGER" property="userId"/>
         <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="content" jdbcType="LONGVARCHAR" property="content"/>
         <result column="imgs" jdbcType="LONGVARCHAR" property="imgs"/>
@@ -19,9 +19,9 @@
         <result column="title" jdbcType="VARCHAR" property="title"/>
         <result column="destination" jdbcType="VARCHAR" property="destination"/>
         <result column="departure" jdbcType="VARCHAR" property="departure"/>
-        <result column="startTime" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="startTime" jdbcType="BIGINT" property="startTime"/>
         <result column="contact" jdbcType="VARCHAR" property="contact"/>
-        <result column="userId" jdbcType="INTEGER" property="userid"/>
+        <result column="userId" jdbcType="INTEGER" property="userId"/>
         <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="content" jdbcType="LONGVARCHAR" property="content"/>
         <result column="imgs" jdbcType="LONGVARCHAR" property="imgs"/>
@@ -61,9 +61,6 @@
             <if test="contact != null">
                 contact,
             </if>
-            <if test="userId != null">
-                userId,
-            </if>
             <if test="content != null">
                 content,
             </if>
@@ -90,9 +87,6 @@
             </if>
             <if test="contact != null">
                 #{contact},
-            </if>
-            <if test="userId != null">
-                #{userId},
             </if>
             <if test="content != null">
                 #{content},

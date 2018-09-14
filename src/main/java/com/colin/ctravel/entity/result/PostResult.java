@@ -15,11 +15,11 @@ public class PostResult implements Serializable {
 
     private String departure;
 
-    private Timestamp startTime;
+    private Long startTime;
 
     private String contact;
 
-    private Integer userid;
+    private Integer userId;
 
     private String content;
 
@@ -62,11 +62,11 @@ public class PostResult implements Serializable {
         this.departure = departure;
     }
 
-    public Timestamp getStartTime() {
+    public Long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp starttime) {
+    public void setStartTime(Long starttime) {
         this.startTime = starttime;
     }
 
@@ -78,12 +78,12 @@ public class PostResult implements Serializable {
         this.contact = contact;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getContent() {
