@@ -17,6 +17,8 @@ public class User implements Serializable {
 
     private Boolean fromWx;
 
+    private String token;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -73,5 +75,13 @@ public class User implements Serializable {
 
     public void setFromWx(Boolean fromWx) {
         this.fromWx = fromWx;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

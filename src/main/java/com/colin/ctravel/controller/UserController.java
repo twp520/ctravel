@@ -3,6 +3,7 @@ package com.colin.ctravel.controller;
 import com.colin.ctravel.entity.BaseResult;
 import com.colin.ctravel.entity.User;
 import com.colin.ctravel.service.UserService;
+import com.colin.ctravel.utils.Base64Util;
 import com.colin.ctravel.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,9 +27,11 @@ public class UserController {
             return ResultUtil.requestFail("用户不存在！");
         }
         if (!passworld.equals(user.getPassworld())) {
-            return ResultUtil.requestFail("密码错误！");
+            return ResultUtil.requestFail("密误！");
         }
-
+        //生成一个token 字符串 userId=id
+        String token = Base64Util.encodeText(("userId=" + user.getId()));
+        user.setToken(token);
         return ResultUtil.requestSuccess(userService.removePwd(user));
     }
 

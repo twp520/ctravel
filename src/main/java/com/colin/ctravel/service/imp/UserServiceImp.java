@@ -34,6 +34,7 @@ public class UserServiceImp implements UserService {
         user1.setFromWx(user.getFromWx());
         user1.setGender(user.getGender());
         user1.setHeadUrl(user.getHeadUrl());
+        user1.setToken(user.getToken());
         return user1;
     }
 
