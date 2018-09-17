@@ -46,4 +46,10 @@ public class UserServiceImp implements UserService {
         return user != null;
     }
 
+    @Override
+    public int registerUser(User user) {
+        if (user == null)
+            return 0;
+        return mapper.insertUser(user);
+    }
 }
