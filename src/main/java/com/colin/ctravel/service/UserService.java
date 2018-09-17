@@ -6,8 +6,6 @@ public interface UserService {
 
     User findUserByAccount(String account);
 
-    User removePwd(User user);
-
     boolean hasUserById(int id);
 
     int registerUser(User user);

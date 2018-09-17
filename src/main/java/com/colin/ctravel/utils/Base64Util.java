@@ -27,4 +27,8 @@ public class Base64Util {
         }
         return "";
     }
+
+    public static String createToken(Integer uid) {
+        return encodeText("userId=" + uid);
+    }
 }

@@ -27,12 +27,13 @@ public class UserController {
             return ResultUtil.requestFail("用户不存在！");
         }
         if (!passworld.equals(user.getPassworld())) {
-            return ResultUtil.requestFail("密误！");
+            return ResultUtil.requestFail("密码错误！");
         }
         //生成一个token 字符串 userId=id
-        String token = Base64Util.encodeText(("userId=" + user.getId()));
+        String token = Base64Util.createToken(user.getId());
         user.setToken(token);
-        return ResultUtil.requestSuccess(userService.removePwd(user));
+        user.setPassworld("");
+        return ResultUtil.requestSuccess(user);
     }
 
     @GetMapping("/test")
@@ -55,9 +56,11 @@ public class UserController {
         int row = userService.registerUser(iUser);
         if (row > 0) {
             //TODO 生成token 并且去掉密码
-            iUser.setPassworld("");
-            return ResultUtil.requestSuccess(iUser);
+            User rUser = userService.findUserByAccount(account);
+            rUser.setToken(Base64Util.createToken(rUser.getId()));
+            rUser.setPassworld("");
+            return ResultUtil.requestSuccess(rUser);
         }
-        return ResultUtil.requestSuccess("");
+        return ResultUtil.requestFail("未知错误");
     }
 }

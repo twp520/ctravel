@@ -11,8 +11,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImp implements UserService {
 
 
-    final
-    UserMapper mapper;
+    private final UserMapper mapper;
 
     @Autowired
     public UserServiceImp(UserMapper mapper) {
@@ -23,19 +22,6 @@ public class UserServiceImp implements UserService {
     public User findUserByAccount(String account) {
         return mapper.selectByAccount(account);
 //        return null;
-    }
-
-    @Override
-    public User removePwd(User user) {
-        User user1 = new User();
-        user1.setAccount(user.getAccount());
-        user1.setId(user.getId());
-        user1.setNickname(user.getNickname());
-        user1.setFromWx(user.getFromWx());
-        user1.setGender(user.getGender());
-        user1.setHeadUrl(user.getHeadUrl());
-        user1.setToken(user.getToken());
-        return user1;
     }
 
     @Override
