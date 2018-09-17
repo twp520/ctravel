@@ -9,4 +9,6 @@ public interface UserService {
     User removePwd(User user);
 
     boolean hasUserById(int id);
+
+    int registerUser(User user);
 }

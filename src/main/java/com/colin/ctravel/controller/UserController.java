@@ -40,4 +40,24 @@ public class UserController {
         return ResultUtil.requestSuccess("测试成功");
     }
 
+    @PostMapping("/register")
+    BaseResult register(String account, String nickname, String passworld, Integer gender, String headUrl) {
+        User user = userService.findUserByAccount(account);
+        if (user != null) {
+            return ResultUtil.requestFail("用户已经存在！");
+        }
+        User iUser = new User();
+        iUser.setAccount(account);
+        iUser.setNickname(nickname);
+        iUser.setHeadUrl(headUrl);
+        iUser.setPassworld(passworld);
+        iUser.setGender(gender);
+        int row = userService.registerUser(iUser);
+        if (row > 0) {
+            //TODO 生成token 并且去掉密码
+            iUser.setPassworld("");
+            return ResultUtil.requestSuccess(iUser);
+        }
+        return ResultUtil.requestSuccess("");
+    }
 }

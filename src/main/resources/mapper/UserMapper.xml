@@ -32,5 +32,25 @@
         where account = #{account,jdbcType=VARCHAR}
     </select>
 
-
+    <insert id="insertUser" parameterType="com.colin.ctravel.entity.User" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id">
+        INSERT INTO t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="account !=null">account,</if>
+            <if test="nickname !=null">nickname,</if>
+            <if test="passworld !=null">passworld,</if>
+            <if test="gender !=null">gender,</if>
+            <if test="headUrl !=null">headUrl,</if>
+            <if test="fromWx !=null">fromWx</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="account !=null">#{account},</if>
+            <if test="nickname !=null">#{nickname},</if>
+            <if test="passworld !=null">#{passworld},</if>
+            <if test="gender !=null">#{gender},</if>
+            <if test="headUrl !=null">#{headUrl},</if>
+            <if test="fromWx !=null">#{fromWx},</if>
+        </trim>
+    </insert>
 </mapper>

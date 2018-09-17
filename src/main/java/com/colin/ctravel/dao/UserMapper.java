@@ -9,4 +9,5 @@ public interface UserMapper {
 
     User selectByAccount(String account);
 
+    int insertUser(User user);
 }
