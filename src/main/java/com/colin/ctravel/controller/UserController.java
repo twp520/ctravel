@@ -50,9 +50,22 @@ public class UserController {
         User iUser = new User();
         iUser.setAccount(account);
         iUser.setNickname(nickname);
-        iUser.setHeadUrl(headUrl);
         iUser.setPassworld(passworld);
         iUser.setGender(gender);
+        //设置一个默认头像链接
+        if (headUrl != null && !headUrl.equals("")) {
+            iUser.setHeadUrl(headUrl);
+        } else {
+            String head;
+            if (gender == 0) {
+                head = "http://colin-ctravel-pictuer.oss-cn-beijing.aliyuncs.com/photo/head_def_boy.jpeg";
+            } else if (gender == 1) {
+                head = "http://colin-ctravel-pictuer.oss-cn-beijing.aliyuncs.com/photo/head_def_girl.jpeg";
+            } else {
+                head = "http://colin-ctravel-pictuer.oss-cn-beijing.aliyuncs.com/photo/head_def_et.jpg";
+            }
+            iUser.setHeadUrl(head);
+        }
         int row = userService.registerUser(iUser);
         if (row > 0) {
             //TODO 生成token 并且去掉密码
