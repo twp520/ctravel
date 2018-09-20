@@ -36,7 +36,7 @@
     </select>
 
     <select id="findAllPost" resultMap="DetailResultMap">
-        SELECT * FROM t_post
+        SELECT * FROM t_post ORDER by t_post.createTime DESC
     </select>
 
     <insert id="insertPost" parameterType="com.colin.ctravel.entity.Post" useGeneratedKeys="true" keyProperty="id"

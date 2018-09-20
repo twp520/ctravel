@@ -41,6 +41,11 @@ public class PostController {
         if (!userService.hasUserById(post.getUserId())) {
             return ResultUtil.requestFail("用户不存在");
         }
+
+        if (post.getImgs() == null || post.getImgs().equals("")) {
+            //TODO 为post添加一个默认的图片
+            post.setImgs("");
+        }
         int row = postService.addOnePost(post);
         if (row > 0) {
             return ResultUtil.requestSuccess("发送成功");
