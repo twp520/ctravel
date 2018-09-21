@@ -52,10 +52,14 @@
                enableUpdateByExample="false">
         </table>-->
 
-        <table schema="db_ctravel" tableName="t_post"
+       <!-- <table schema="db_ctravel" tableName="t_post"
                domainObjectName="Post" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
-        </table>
+        </table>-->
+        <table schema="db_ctravel" tableName="t_comment"
+               domainObjectName="Comment" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>

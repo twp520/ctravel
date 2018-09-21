@@ -17,9 +17,9 @@ public class CtravelApplication extends SpringBootServletInitializer{
         SpringApplication.run(CtravelApplication.class, args);
     }
 
-    @Override
+   /* @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(CtravelApplication.class);
-    }
+    }*/
 
 }
