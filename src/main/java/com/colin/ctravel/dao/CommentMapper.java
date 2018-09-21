@@ -1,6 +1,9 @@
 package com.colin.ctravel.dao;
 
 import com.colin.ctravel.entity.Comment;
+import com.colin.ctravel.entity.result.CommentResult;
+
+import java.util.List;
 
 public interface CommentMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,6 @@ public interface CommentMapper {
     int updateByPrimaryKeySelective(Comment record);
 
     int updateByPrimaryKey(Comment record);
+
+    List<CommentResult> selectByPostId(Integer postId);
 }

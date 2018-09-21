@@ -1,19 +1,16 @@
 package com.colin.ctravel.dao;
 
 import com.colin.ctravel.entity.Post;
+import com.colin.ctravel.entity.result.PostResult;
+
+import java.util.List;
 
 public interface PostMapper {
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(PostWithBLOBs record);
+    Post selectByPrimaryKey(Integer id);
 
-    int insertSelective(PostWithBLOBs record);
+    List<PostResult> findAllPost();
 
-    PostWithBLOBs selectByPrimaryKey(Integer id);
+    int insertPost(Post post);
 
-    int updateByPrimaryKeySelective(PostWithBLOBs record);
-
-    int updateByPrimaryKeyWithBLOBs(PostWithBLOBs record);
-
-    int updateByPrimaryKey(Post record);
 }

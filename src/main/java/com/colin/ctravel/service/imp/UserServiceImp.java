@@ -39,4 +39,9 @@ public class UserServiceImp implements UserService {
             return 0;
         return mapper.insertUser(user);
     }
+
+    @Override
+    public UserResult findUserById(Integer id) {
+        return mapper.selectByPrimaryKey(id);
+    }
 }

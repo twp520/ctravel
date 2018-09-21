@@ -15,4 +15,8 @@ public class ResultUtil {
     public static BaseResult requestFail(String msg) {
         return new BaseResult(CODE_FAIL, msg, null);
     }
+
+    public static BaseResult requestFail(String msg,Object data) {
+        return new BaseResult(CODE_FAIL, msg, data);
+    }
 }

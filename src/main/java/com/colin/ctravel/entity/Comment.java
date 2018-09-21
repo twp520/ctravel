@@ -2,20 +2,21 @@ package com.colin.ctravel.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Comment implements Serializable {
     private Integer id;
 
     private String content;
 
-    private Integer postid;
+    private Integer postId;
 
-    private Integer senduid;
+    private Integer sendUid;
 
-    private Timestamp createtime;
+    private Timestamp createTime;
 
-    private Integer atuid;
+    private Integer atUid;
+
+    private Long time;
 
     private static final long serialVersionUID = 1L;
 
@@ -35,35 +36,43 @@ public class Comment implements Serializable {
         this.content = content == null ? null : content.trim();
     }
 
-    public Integer getPostid() {
-        return postid;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setPostid(Integer postid) {
-        this.postid = postid;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 
-    public Integer getSenduid() {
-        return senduid;
+    public Integer getSendUid() {
+        return sendUid;
     }
 
-    public void setSenduid(Integer senduid) {
-        this.senduid = senduid;
+    public void setSendUid(Integer sendUid) {
+        this.sendUid = sendUid;
     }
 
-    public Timestamp getCreatetime() {
-        return createtime;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Timestamp createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public Integer getAtuid() {
-        return atuid;
+    public Integer getAtUid() {
+        return atUid;
     }
 
-    public void setAtuid(Integer atuid) {
-        this.atuid = atuid;
+    public void setAtUid(Integer atUid) {
+        this.atUid = atUid;
+    }
+
+    public Long getTime() {
+        return time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
     }
 }
