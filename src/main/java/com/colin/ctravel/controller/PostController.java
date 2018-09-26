@@ -58,7 +58,15 @@ public class PostController {
         int row = postService.addOnePost(post);
         if (row > 0) {
             //成功后为他添加一条评论
-            return ResultUtil.requestSuccess("发送成功");
+            Comment comment = new Comment();
+            comment.setContent("大家好，我是这次行程的发起人，大家有什么问题都可以在留言区进行交流哟！");
+            comment.setPostId(post.getId());
+            comment.setSendUid(post.getUserId());
+            comment.setAtUid(-1);
+            int commentRow = postService.commentPost(comment);
+            if (commentRow > 0) {
+                return ResultUtil.requestSuccess("发送成功");
+            }
         }
         return ResultUtil.requestFail("未知错误");
     }
