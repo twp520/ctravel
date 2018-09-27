@@ -1,6 +1,7 @@
 package com.colin.ctravel.service;
 
 import com.colin.ctravel.entity.Comment;
+import com.colin.ctravel.entity.Favorite;
 import com.colin.ctravel.entity.Post;
 import com.colin.ctravel.entity.result.CommentResult;
 import com.colin.ctravel.entity.result.PostResult;
@@ -19,5 +20,7 @@ public interface PostService {
 
     List<CommentResult> getCommentListByPostId(Integer postId);
 
+    int favPost(Favorite favorite);
 
+    List<PostResult> getUserFavPosts(Integer userId);
 }

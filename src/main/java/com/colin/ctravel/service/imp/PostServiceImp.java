@@ -1,8 +1,10 @@
 package com.colin.ctravel.service.imp;
 
 import com.colin.ctravel.dao.CommentMapper;
+import com.colin.ctravel.dao.FavoriteMapper;
 import com.colin.ctravel.dao.PostMapper;
 import com.colin.ctravel.entity.Comment;
+import com.colin.ctravel.entity.Favorite;
 import com.colin.ctravel.entity.Post;
 import com.colin.ctravel.entity.result.CommentResult;
 import com.colin.ctravel.entity.result.PostResult;
@@ -17,11 +19,13 @@ public class PostServiceImp implements PostService {
 
     private final PostMapper postMapper;
     private final CommentMapper commentMapper;
+    private final FavoriteMapper favoriteMapper;
 
     @Autowired
-    public PostServiceImp(PostMapper postMapper, CommentMapper commentMapper) {
+    public PostServiceImp(PostMapper postMapper, CommentMapper commentMapper, FavoriteMapper favoriteMapper) {
         this.postMapper = postMapper;
         this.commentMapper = commentMapper;
+        this.favoriteMapper = favoriteMapper;
     }
 
     @Override
@@ -42,5 +46,15 @@ public class PostServiceImp implements PostService {
     @Override
     public List<CommentResult> getCommentListByPostId(Integer postId) {
         return commentMapper.selectByPostId(postId);
+    }
+
+    @Override
+    public int favPost(Favorite favorite) {
+        return favoriteMapper.insertSelective(favorite);
+    }
+
+    @Override
+    public List<PostResult> getUserFavPosts(Integer userId) {
+        return favoriteMapper.getUserFavPost(userId);
     }
 }

@@ -57,8 +57,8 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
         </table>-->
-        <table schema="db_ctravel" tableName="t_comment"
-               domainObjectName="Comment" enableCountByExample="false"
+        <table schema="db_ctravel" tableName="t_fav"
+               domainObjectName="Favorite" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false"/>
     </context>

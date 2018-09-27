@@ -2,8 +2,10 @@ package com.colin.ctravel.controller;
 
 import com.colin.ctravel.entity.BaseResult;
 import com.colin.ctravel.entity.Comment;
+import com.colin.ctravel.entity.Favorite;
 import com.colin.ctravel.entity.Post;
 import com.colin.ctravel.entity.result.CommentResult;
+import com.colin.ctravel.entity.result.PostResult;
 import com.colin.ctravel.entity.result.UserResult;
 import com.colin.ctravel.service.PostService;
 import com.colin.ctravel.service.UserService;
@@ -53,7 +55,7 @@ public class PostController {
 
         if (post.getImgs() == null || post.getImgs().equals("")) {
             //TODO 为post添加一个默认的图片
-            post.setImgs("");
+            post.setImgs("https://colin-ctravel-pictuer.oss-cn-beijing.aliyuncs.com/photo/1537352924055737.jpg");
         }
         int row = postService.addOnePost(post);
         if (row > 0) {
@@ -98,6 +100,50 @@ public class PostController {
         }
 
         return ResultUtil.requestFail("未知错误");
+    }
+
+    /**
+     * 收藏帖子
+     *
+     * @param request 请求
+     * @param postId  帖子ID
+     * @return 收藏结果
+     */
+    @PostMapping("/favPost")
+    public BaseResult favPost(HttpServletRequest request, Integer postId) {
+        Integer uid = Base64Util.decodeUidByToken(request);
+        if (uid == -1) {
+            return ResultUtil.requestFail("Token异常");
+        }
+        if (postId == -1) {
+            return ResultUtil.requestFail("Post不存在");
+        }
+        Favorite favorite = new Favorite();
+        favorite.setUserId(uid);
+        favorite.setPostId(postId);
+        try {
+            int row = postService.favPost(favorite);
+            if (row > 0) {
+                ResultUtil.requestSuccess("收藏成功");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultUtil.requestFail("插入异常:" + e.getMessage());
+        }
+        return ResultUtil.requestFail("未知错误");
+    }
+
+    @GetMapping("/getUserFav")
+    public BaseResult getUserFavorite(HttpServletRequest request) {
+        Integer uid = Base64Util.decodeUidByToken(request);
+        if (uid == -1) {
+            return ResultUtil.requestFail("Token异常");
+        }
+        List<PostResult> userFavPosts = postService.getUserFavPosts(uid);
+        if (userFavPosts == null) {
+            userFavPosts = new ArrayList<>();
+        }
+        return ResultUtil.requestSuccess(userFavPosts);
     }
 
     /**
