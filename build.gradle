@@ -23,7 +23,7 @@ apply plugin: 'io.spring.dependency-management'
 //引入 mybatis-generator 插件
 apply plugin: "com.arenagod.gradle.MybatisGenerator"
 //war
-//apply plugin: 'war'
+apply plugin: 'war'
 
 group = 'com.colin'
 version = '0.0.1-SNAPSHOT'
@@ -40,7 +40,7 @@ dependencies {
 	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
 	//mybatis-generator core 包
 	compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version:'1.3.2'
-//	providedCompile("org.springframework.boot:spring-boot-starter-tomcat")
+	providedCompile("org.springframework.boot:spring-boot-starter-tomcat")
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
