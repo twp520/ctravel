@@ -57,4 +57,15 @@ public class PostServiceImp implements PostService {
     public List<PostResult> getUserFavPosts(Integer userId) {
         return favoriteMapper.getUserFavPost(userId);
     }
+
+    @Override
+    public Boolean queryUserFavorite(Integer userId, Integer postId) {
+        try {
+            int row = favoriteMapper.queryFavorite(userId, postId);
+            return row == 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

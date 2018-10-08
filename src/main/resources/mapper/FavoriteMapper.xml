@@ -56,5 +56,8 @@
     WHERE t_fav.userId = #{userId,jdbcType=INTEGER} and t_fav.postId=t_post.id;
   </select>
 
+    <select id="queryFavorite" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT count(*) FROM t_fav WHERE userId=#{userId,jdbcType=INTEGER} AND postId = #{postId,jdbcType=INTEGER};
+    </select>
 
 </mapper>

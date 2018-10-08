@@ -23,4 +23,6 @@ public interface PostService {
     int favPost(Favorite favorite);
 
     List<PostResult> getUserFavPosts(Integer userId);
+
+    Boolean queryUserFavorite(Integer userId, Integer postId);
 }

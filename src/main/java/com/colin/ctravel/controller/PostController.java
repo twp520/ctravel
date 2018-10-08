@@ -118,6 +118,10 @@ public class PostController {
         if (postId == -1) {
             return ResultUtil.requestFail("Post不存在");
         }
+        Boolean hasFav = postService.queryUserFavorite(uid, postId);
+        if (hasFav) {
+            return ResultUtil.requestFail("已经收藏过了");
+        }
         Favorite favorite = new Favorite();
         favorite.setUserId(uid);
         favorite.setPostId(postId);
@@ -133,6 +137,12 @@ public class PostController {
         return ResultUtil.requestFail("未知错误");
     }
 
+    /**
+     * 查询用户收藏的帖子
+     *
+     * @param request 请求
+     * @return 用户收藏的帖子
+     */
     @GetMapping("/getUserFav")
     public BaseResult getUserFavorite(HttpServletRequest request) {
         Integer uid = Base64Util.decodeUidByToken(request);
@@ -144,6 +154,16 @@ public class PostController {
             userFavPosts = new ArrayList<>();
         }
         return ResultUtil.requestSuccess(userFavPosts);
+    }
+
+    @GetMapping("/isFavorite")
+    public BaseResult queryUserFavorite(HttpServletRequest request, Integer postId) {
+        Integer uid = Base64Util.decodeUidByToken(request);
+        if (uid == -1) {
+            return ResultUtil.requestFail("Token异常");
+        }
+        Boolean isFav = postService.queryUserFavorite(uid, postId);
+        return ResultUtil.requestSuccess(isFav);
     }
 
     /**
