@@ -55,7 +55,8 @@ public class PostController {
 
         if (post.getImgs() == null || post.getImgs().equals("")) {
             //TODO 为post添加一个默认的图片
-            post.setImgs("https://colin-ctravel-pictuer.oss-cn-beijing.aliyuncs.com/photo/1537352924055737.jpg");
+            //["https:\/\/colin-ctravel-pictuer.oss-cn-beijing.aliyuncs.com\/photo\/1537352924055737.jpg"]
+            post.setImgs("[\"https://colin-ctravel-pictuer.oss-cn-beijing.aliyuncs.com/photo/1537352924055737.jpg\"]");
         }
         int row = postService.addOnePost(post);
         if (row > 0) {
@@ -128,7 +129,7 @@ public class PostController {
         try {
             int row = postService.favPost(favorite);
             if (row > 0) {
-                ResultUtil.requestSuccess("收藏成功");
+                return ResultUtil.requestSuccess("收藏成功");
             }
         } catch (Exception e) {
             e.printStackTrace();
